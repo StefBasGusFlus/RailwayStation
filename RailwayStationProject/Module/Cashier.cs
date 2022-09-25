@@ -8,8 +8,6 @@ namespace RailwayStationProject.Module
     {
         public string Name { get; } = "Кассир";
 
-       
-
         public bool MenuThisModule()
         {
             CashierWorking work = new CashierWorking();

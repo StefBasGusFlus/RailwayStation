@@ -32,7 +32,6 @@ namespace RailwayStationProject
         {
             Console.SetCursorPosition(_x, _y);
             Console.Write("╔");
-
             for (int i = 0; i < _width; i++)
             {
                 Console.Write("═");
@@ -46,6 +45,7 @@ namespace RailwayStationProject
                 Console.SetCursorPosition(_x + _width + 1, _y + i + 1);
                 Console.Write("║");
             }
+
             Console.SetCursorPosition(_x, _y + _height + 1);
             Console.Write("╚");
             for (int i = 0; i < _width; i++)

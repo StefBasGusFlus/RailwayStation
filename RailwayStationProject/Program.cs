@@ -11,6 +11,7 @@ namespace RailwayStationProject
         static void Main(string[] args)
         {
             IModulating[] subModules = { new EditorRoute(), new EditorTrip(), new Exit() };
+
             IModulating[] mainModules = 
             { 
                 new Director(subModules), 

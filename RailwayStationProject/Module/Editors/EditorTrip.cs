@@ -30,6 +30,7 @@ namespace RailwayStationProject.Module.Editors
         public void Editor()
         {
             string[] data = new string[_subMenu.Length + 1];
+
             for (int i = 0; i < _subMenu.Length; i++)
             {
                 Console.Write(_subMenu[i]);
@@ -71,7 +72,6 @@ namespace RailwayStationProject.Module.Editors
                         }
                         break;
                 }
-
             }
 
             Console.Clear();

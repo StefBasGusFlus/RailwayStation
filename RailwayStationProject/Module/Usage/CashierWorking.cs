@@ -9,8 +9,8 @@ namespace RailwayStationProject.Module.Usage
     {
         private const int PLACE_OCCUPIED = 999;
         private const int NO_PLACES = -1;
-
         private DataRepositories _workFile = new DataRepositories();
+
         public void Use()
         {
             if (File.Exists("DataRoute.txt"))
@@ -18,20 +18,24 @@ namespace RailwayStationProject.Module.Usage
                 Console.Write("Введите название остановки: ");
                 string busStop = Console.ReadLine();
                 Route foundRouteByStop = RouteSearch(busStop);
+
                 if (foundRouteByStop == null)
                 {
                     Choise.ErrorChoise("Ни один маршрут не найден");
                     return;
                 }
+
                 Console.WriteLine($"Маршрут: {foundRouteByStop.NameRoute}");
 
                 Console.WriteLine("----------|РЕЙСЫ|----------");
                 List<Trip> existTrips = ExistTripsByRoute(foundRouteByStop.NameRoute);
+
                 if(existTrips == null)
                 {
                     Choise.ErrorChoise("РЕЙСОВ НЕТ!");
                     return;
                 }
+
                 DisplayingListTrip(existTrips);
 
                 Console.Write("Какой рейс(номер по списку): ");
@@ -50,8 +54,8 @@ namespace RailwayStationProject.Module.Usage
                     Choise.ErrorChoise("Мест нет!");
                     return;
                 }
-                existTrips[choisedTrip].BusTrip.Places[indexFreePlace] = PLACE_OCCUPIED;
 
+                existTrips[choisedTrip].BusTrip.Places[indexFreePlace] = PLACE_OCCUPIED;
                 _workFile.SaveData(existTrips[choisedTrip].BusTrip.Places, $"{existTrips[choisedTrip].FilePlacesInBus}.txt");
 
                 Console.Clear();
@@ -83,6 +87,7 @@ namespace RailwayStationProject.Module.Usage
                         return route;
                 }
             }
+
             return null;
         }
 
@@ -97,12 +102,14 @@ namespace RailwayStationProject.Module.Usage
                     existTrips.Add(trip);
                 }
             }
+
             return existTrips.Count == 0 ? null : existTrips;
         }
 
         private void DisplayingListTrip(List<Trip> trips)
         {
             int numbering = 0;
+
             foreach(Trip trip in trips)
             {
                 numbering++;

@@ -16,7 +16,9 @@ namespace RailwayStationProject.Data
     internal class DataRepositories
     {
         private delegate IStorable LoadingElement(string[] data, ref int index);
+
         public List<Route> Routes { get; private set; }
+
         public List<Trip> Trips { get; private set; }
 
         public DataRepositories()
@@ -46,16 +48,17 @@ namespace RailwayStationProject.Data
             fs.Close();
         }
 
-        private static List<IStorable> LoadData<IStorable>(string path, LoadingElement loading)
+        private static List<T> LoadData<T>(string path, LoadingElement loading)
+            where T : IStorable
         { 
             if(!File.Exists(path))
                 File.Create(path).Close();
 
-            List<IStorable> elements = new List<IStorable>();
+            List<T> elements = new List<T>();
             string[] data = File.ReadAllLines(path);
             for (int i = 0; i < data.Length; i++)
             {
-                IStorable element = (IStorable)loading(data, ref i);
+                T element = (T)loading(data, ref i);
                 elements.Add(element);
             }
 
@@ -99,11 +102,10 @@ namespace RailwayStationProject.Data
         {
             string[] text = File.ReadAllLines("Places\\" + nameFile);
             int[] dataPlaces = new int[text.Length];
-            for (int i = 0; i < text.Length; i++)
-            {
-               dataPlaces[i] = int.Parse(text[i]);
-            }
 
+            for (int i = 0; i < text.Length; i++)
+               dataPlaces[i] = int.Parse(text[i]);
+            
             return dataPlaces;
         }
 

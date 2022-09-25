@@ -9,7 +9,6 @@ namespace RailwayStationProject.Module
 
         private IModulating[] _modulesDirector;
         
-
         public Director(params IModulating[] modules)
         { 
             _modulesDirector = modules; 
@@ -18,6 +17,7 @@ namespace RailwayStationProject.Module
         public bool MenuThisModule()
         {
             DrawModule.Draw(_modulesDirector);
+
             return false;
         }
     }

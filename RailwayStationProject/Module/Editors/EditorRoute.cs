@@ -32,6 +32,7 @@ namespace RailwayStationProject.Module.Editors
             {
                 Console.Write(_subMenu[i]);
                 data[i] = Console.ReadLine();
+
                 if (data[i] == null)
                     return;
             }

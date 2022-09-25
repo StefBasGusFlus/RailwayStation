@@ -15,6 +15,7 @@ namespace RailwayStationProject.Module
             foreach(var route in data.Routes)
             {
                 Console.WriteLine($"Маршрут: {route.NameRoute}");
+
                 Console.WriteLine("!!!РЕЙСЫ!!!");
                 foreach(var trip in data.Trips)
                 {

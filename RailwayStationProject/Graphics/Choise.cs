@@ -36,14 +36,15 @@ namespace RailwayStationProject
                 }    
             }
             Console.ResetColor();
+
             if (_isWipe)
                 Console.Clear();
+
             return activeElement;
         }
 
         public int ChoiseInGorizontalMenu()
         {
-
             Console.CursorVisible = false;
             int active = 0;
             bool isWorking = true;
@@ -61,8 +62,10 @@ namespace RailwayStationProject
                 }
             }
             Console.ResetColor();
+
             if (_isWipe)
                 Console.Clear();
+
             return active;
         }
 

@@ -34,11 +34,13 @@ namespace RailwayStationProject
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
+
             for (int i = 0; i < _elementsMenu.Length; i++)
             {
                 Console.SetCursorPosition(_x, _y + i);
                 Console.Write(_elementsMenu[i].Name);
             }
+
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.SetCursorPosition(_x, _y + active);
@@ -51,6 +53,7 @@ namespace RailwayStationProject
             int activeX = 0;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
+
             for (int i = 0; i < _elementsMenu.Length; i++)
             {
                 if (i == active)
@@ -58,9 +61,8 @@ namespace RailwayStationProject
                 Console.SetCursorPosition(_x + total, _y);
                 Console.Write(_elementsMenu[i].Name);
                 total += _elementsMenu[i].Name.Length;
-                
-
             }
+
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.SetCursorPosition(_x + activeX, _y);
@@ -71,11 +73,13 @@ namespace RailwayStationProject
         public int MaxLengthElementMenu()
         {
             int total = int.MinValue;
+
             foreach (IModulating i in _elementsMenu)
             {
                 if(i.Name.Length > total)
                     total = i.Name.Length;
             }
+
             return total;
         }
     }

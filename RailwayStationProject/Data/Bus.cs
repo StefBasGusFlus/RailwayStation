@@ -9,6 +9,7 @@ namespace RailwayStationProject.Data
     internal class Bus
     {
         public string NameBrand { get; init; }
+
         public int[] Places { get; set; }
     }
 }

@@ -7,12 +7,12 @@ namespace RailwayStationProject.Graphics
         public static void Draw(IModulating[] modules)
         {
             bool isExit = false;
+
             while (!isExit)
             {
                 Choise ch = new Choise(modules);
                 int choisedModule = ch.ChoiseInVerticalMenu();
                 isExit = modules[choisedModule].MenuThisModule();
-
             }
         }
     
