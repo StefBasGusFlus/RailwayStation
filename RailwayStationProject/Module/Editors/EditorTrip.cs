@@ -44,7 +44,7 @@ namespace RailwayStationProject.Module.Editors
                     case 0:
                         if (!isExistRoute(data[i]))
                         {
-                            Choise.ErrorChoise("Маршрут не существует!");
+                            Navigation.ErrorChoise("Маршрут не существует!");
                             return;
                         }
                         break;
@@ -56,7 +56,7 @@ namespace RailwayStationProject.Module.Editors
                         }
                         catch
                         {
-                            Choise.ErrorChoise("Некорректный ввод данных!");
+                            Navigation.ErrorChoise("Некорректный ввод данных!");
                             return;
                         }
                         break;
@@ -67,7 +67,7 @@ namespace RailwayStationProject.Module.Editors
                         }
                         catch
                         {
-                            Choise.ErrorChoise("Некорректное время!");
+                            Navigation.ErrorChoise("Некорректное время!");
                             return;
                         }
                         break;

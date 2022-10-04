@@ -21,7 +21,7 @@ namespace RailwayStationProject.Module.Usage
 
                 if (foundRouteByStop == null)
                 {
-                    Choise.ErrorChoise("Ни один маршрут не найден");
+                    Navigation.ErrorChoise("Ни один маршрут не найден");
                     return;
                 }
 
@@ -32,7 +32,7 @@ namespace RailwayStationProject.Module.Usage
 
                 if(existTrips == null)
                 {
-                    Choise.ErrorChoise("РЕЙСОВ НЕТ!");
+                    Navigation.ErrorChoise("РЕЙСОВ НЕТ!");
                     return;
                 }
 
@@ -43,7 +43,7 @@ namespace RailwayStationProject.Module.Usage
 
                 if(choisedTrip < 0 && choisedTrip > existTrips.Count - 1)
                 {
-                    Choise.ErrorChoise("Неверный номер!");
+                    Navigation.ErrorChoise("Неверный номер!");
                     return;
                 }
 
@@ -51,7 +51,7 @@ namespace RailwayStationProject.Module.Usage
 
                 if(indexFreePlace == NO_PLACES)
                 {
-                    Choise.ErrorChoise("Мест нет!");
+                    Navigation.ErrorChoise("Мест нет!");
                     return;
                 }
 
@@ -72,7 +72,7 @@ namespace RailwayStationProject.Module.Usage
             }
             else
             {
-                Choise.ErrorChoise("Данных нет");
+                Navigation.ErrorChoise("Данных нет");
                 return;
             }
         }

@@ -10,8 +10,8 @@ namespace RailwayStationProject.Graphics
 
             while (!isExit)
             {
-                Choise ch = new Choise(modules);
-                int choisedModule = ch.ChoiseInVerticalMenu();
+                Menu menu = new Menu(modules);
+                int choisedModule = menu.UseVerticalMenu();
                 isExit = modules[choisedModule].MenuThisModule();
             }
         }

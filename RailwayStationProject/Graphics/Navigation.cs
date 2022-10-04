@@ -4,27 +4,27 @@ using RailwayStationProject.Interfaces;
 
 namespace RailwayStationProject
 {
-    internal class Choise : Menu
+    internal class Navigation
     {
-        private bool _isWipe = true;
+        private IModulating[] _elementsMenu;
 
-        public Choise(params IModulating[] elementsMenu) :base(elementsMenu) { }
+        public event Action<int> OrientationMenuChoose;
 
-        public Choise(bool isWipe, params IModulating[] elementsMenu) : base(elementsMenu) => _isWipe = isWipe;
-
-        public Choise(int x, int y, params IModulating[] elementsMenu) : base(x, y, elementsMenu) { }
-
-        public Choise(int x, int y, bool isWipe, params IModulating[] elementsMenu) : base(x, y, elementsMenu) => _isWipe = isWipe;
+        public Navigation(IModulating[] elementsMenu)
+        {
+            _elementsMenu = elementsMenu;
+        }
 
         public int ChoiseInVerticalMenu()
         {
-            Frame frame = new Frame(_x - 2, _y - 1, MaxLengthElementMenu() + 3, _elementsMenu.Length);
             Console.CursorVisible = false;
+
             int activeElement = 0;
             bool isVisible = true;
+
             while (isVisible)
             {
-                VerticalMenu(activeElement);
+                OrientationMenuChoose?.Invoke(activeElement);
 
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
@@ -36,45 +36,45 @@ namespace RailwayStationProject
                 }    
             }
             Console.ResetColor();
-
-            if (_isWipe)
-                Console.Clear();
+            Console.Clear();
 
             return activeElement;
         }
 
-        public int ChoiseInGorizontalMenu()
+        public int ChoiseInHorizontalMenu()
         {
             Console.CursorVisible = false;
-            int active = 0;
+
+            int activeElement = 0;
             bool isWorking = true;
+
             while (isWorking)
             {
-                DrawingGorizontalMenu(active);
+                OrientationMenuChoose?.Invoke(activeElement);
 
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
                 switch (key.Key)
                 {
-                    case ConsoleKey.A: if (active > 0) active--; break;
-                    case ConsoleKey.D: if (active < _elementsMenu.Length - 1) active++; break;
+                    case ConsoleKey.A: if (activeElement > 0) activeElement--; break;
+                    case ConsoleKey.D: if (activeElement < _elementsMenu.Length - 1) activeElement++; break;
                     case ConsoleKey.Enter: isWorking = false; break;
                 }
             }
             Console.ResetColor();
+            Console.Clear();
 
-            if (_isWipe)
-                Console.Clear();
-
-            return active;
+            return activeElement;
         }
 
         public static void ErrorChoise(string error)
         {
             Console.Clear();
             Frame frame = new Frame(MenuPosition.X - 2, MenuPosition.Y - 2, error.Length + 2, 3);
+
             Console.SetCursorPosition(MenuPosition.X, MenuPosition.Y);
             Console.Write(error);
+
             Console.ReadLine();
             Console.Clear();
 
